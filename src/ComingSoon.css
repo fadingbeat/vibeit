@@ -1,0 +1,128 @@
+.coming-soon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 5vw;
+  text-align: center;
+  background-color: #232659;
+  color: #9ac5c5;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box; /* Include padding in element width/height */
+}
+
+.landing-page-name {
+  font-size: clamp(7vw, 10vw, 14rem);
+  margin: 0;
+}
+
+.audiowide-regular {
+  font-family: 'Audiowide', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jersey-15-regular {
+  font-family: 'Jersey 15', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  /* font-size: 2vw; */
+  font-size: clamp(2rem, 5vw, 4rem);
+  /* margin-bottom: 2vw; */
+  /* margin: 0; */
+}
+
+p {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  max-width: 60ch; /* Restrict line length for readability */
+  line-height: 1.5;
+  /* margin: 0 auto; */
+}
+
+/*SubscriptionBox*/
+
+.subscribe-box {
+  display: flex;
+  flex-direction: column; /* Stack everything vertically */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.subscribe-box form {
+  display: flex;
+  flex-direction: row; /* Default layout for input and button (side by side) */
+  align-items: center;
+  gap: 0; /* No gap for seamless input-button connection */
+  width: 100%; /* Full width of the container */
+  max-width: 500px;
+}
+
+.subscribe-box input {
+  flex: 1; /* Input takes up most of the row */
+  padding: 12px 20px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #8a8a8a;
+  border-radius: 50px 0 0 50px; /* Rounded corners for left side */
+  background: white;
+  box-sizing: border-box;
+}
+
+.subscribe-box input::placeholder {
+  color: #8a8a8a;
+}
+
+.subscribe-box button {
+  padding: 12px 20px;
+  border: none;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0 50px 50px 0; /* Rounded corners for right side */
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  height: 100%; /* Ensure button height matches input height */
+}
+
+.subscribe-box button:hover {
+  background: linear-gradient(to right, #2575fc, #6a11cb);
+}
+
+.subscribe-box button:active {
+  transform: scale(0.95);
+}
+
+/* The message below the form */
+.subscribe-box p {
+  font-size: 0.9rem;
+  color: #4caf50; /* Success message color */
+  text-align: center;
+  margin-top: 15px; /* Space above the message */
+  width: 100%; /* Keep it aligned with form width */
+}
+
+/* Responsive layout: Stack input and button on smaller screens */
+@media (max-width: 768px) {
+  .subscribe-box form {
+    flex-direction: column; /* Stack input and button vertically */
+    align-items: center;
+    gap: 15px; /* Add space between input and button */
+    max-width: 80%;
+  }
+
+  .subscribe-box input,
+  .subscribe-box button {
+    width: 90%; /* Make input and button smaller on small screens */
+    border-radius: 50px; /* Full rounded corners */
+  }
+}
