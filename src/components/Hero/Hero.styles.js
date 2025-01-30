@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Box, Button, Typography } from '@mui/material';
+import { getOpacity } from '@mui/material/styles/createColorScheme';
 
 // 🟢 Hero Container (Full Screen Responsive Section)
 export const HeroContainer = styled(Box)(({ theme }) => ({
@@ -9,8 +10,8 @@ export const HeroContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   textAlign: 'center',
   width: '100%',
-  minHeight: '90vh',
-  padding: '2rem',
+  minHeight: '100vh',
+  // padding: '2rem',
   background:
     'linear-gradient(180deg, rgba(26,1,54,1) 0%, rgba(53,1,48,1) 56%, rgba(64,2,45,1) 70%, rgba(73,2,43,1) 81%, rgba(91,2,39,1) 95%, rgba(99,2,37,1) 99%)',
   color: 'white',
@@ -63,20 +64,25 @@ export const NavLinks = styled(Box)(({ theme }) => ({
 }));
 
 export const NavLink = styled('a')({
-  color: 'white',
+  color: '#D9D9D9',
   textDecoration: 'none',
-  fontSize: '1rem',
+  fontSize: '1.5rem',
+  fontFamily: '"Poppins", serif',
+  fontWeight: 600,
+  fontStyle: 'normal',
   transition: 'color 0.3s',
 
   '&:hover': {
-    color: '#ffcc00',
+    textDecoration: 'underline',
   },
 });
 
 // 🟢 Title
 export const Title = styled(Typography)(({ theme }) => ({
-  fontSize: '2rem',
-  fontWeight: 'bold',
+  fontFamily: '"Audiowide", serif',
+  fontWeight: 400,
+  fontStyle: 'normal',
+  fontSize: '4rem',
   marginBottom: '1.5rem',
   [theme.breakpoints.up('md')]: {
     fontSize: '3rem',
@@ -96,12 +102,18 @@ export const ButtonContainer = styled(Box)({
 // 🟢 Buttons
 export const CustomButton = styled(Button)(({ primary }) => ({
   padding: '0.8rem 2rem',
-  fontSize: '1rem',
-  borderRadius: '5px',
+  fontSize: '1.5rem',
+  fontFamily: '"Poppins", serif',
+  fontWeight: 700,
+  fontStyle: 'normal',
+  borderRadius: '100px',
   textTransform: 'none',
-  backgroundColor: primary ? '#ffcc00' : 'white',
-  color: primary ? '#000' : '#007bff',
+  backgroundColor: primary ? '#1A0136' : '#D9D9D9', // ✅ Matches hero section
+  color: primary ? '#D9D9D9' : '#1A0136', // ✅ High contrast
+
   '&:hover': {
-    backgroundColor: primary ? '#ffaa00' : '#f1f1f1',
+    backgroundColor: primary ? '#49022B' : '#bfbfbf', // 🎨 Blends naturally with hero gradient
+    // color: primary ? '#ffffff' : '#1A0136', // ✅ Keeps contrast readable
+    transition: 'background-color 0.3s ease-in-out, color 0.3s ease-in-out',
   },
 }));
