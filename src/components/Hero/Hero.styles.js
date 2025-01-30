@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
 import { Box, Button, Typography } from '@mui/material';
-import { getOpacity } from '@mui/material/styles/createColorScheme';
 
 // 🟢 Hero Container (Full Screen Responsive Section)
 export const HeroContainer = styled(Box)(({ theme }) => ({
@@ -11,7 +10,6 @@ export const HeroContainer = styled(Box)(({ theme }) => ({
   textAlign: 'center',
   width: '100%',
   minHeight: '100vh',
-  // padding: '2rem',
   background:
     'linear-gradient(180deg, rgba(26,1,54,1) 0%, rgba(53,1,48,1) 56%, rgba(64,2,45,1) 70%, rgba(73,2,43,1) 81%, rgba(91,2,39,1) 95%, rgba(99,2,37,1) 99%)',
   color: 'white',
@@ -63,10 +61,10 @@ export const NavLinks = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const NavLink = styled('a')({
+export const NavLink = styled('a')(({ theme }) => ({
   color: '#D9D9D9',
   textDecoration: 'none',
-  fontSize: '1.5rem',
+  fontSize: '0.5rem',
   fontFamily: '"Poppins", serif',
   fontWeight: 600,
   fontStyle: 'normal',
@@ -75,17 +73,27 @@ export const NavLink = styled('a')({
   '&:hover': {
     textDecoration: 'underline',
   },
-});
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '1.5rem',
+  },
+}));
 
 // 🟢 Title
 export const Title = styled(Typography)(({ theme }) => ({
   fontFamily: '"Audiowide", serif',
   fontWeight: 400,
   fontStyle: 'normal',
-  fontSize: '4rem',
+  fontSize: '2rem',
+  padding: '0 1rem',
   marginBottom: '1.5rem',
   [theme.breakpoints.up('md')]: {
     fontSize: '3rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '4rem',
   },
 }));
 
@@ -100,20 +108,25 @@ export const ButtonContainer = styled(Box)({
 });
 
 // 🟢 Buttons
-export const CustomButton = styled(Button)(({ primary }) => ({
-  padding: '0.8rem 2rem',
-  fontSize: '1.5rem',
+export const CustomButton = styled(Button)(({ theme, primary }) => ({
+  padding: theme.spacing(1, 3),
+  fontSize: '1rem',
   fontFamily: '"Poppins", serif',
   fontWeight: 700,
   fontStyle: 'normal',
   borderRadius: '100px',
   textTransform: 'none',
-  backgroundColor: primary ? '#1A0136' : '#D9D9D9', // ✅ Matches hero section
-  color: primary ? '#D9D9D9' : '#1A0136', // ✅ High contrast
+  backgroundColor: primary === 'true' ? '#1A0136' : '#D9D9D9',
+  color: primary === 'true' ? '#D9D9D9' : '#1A0136',
 
   '&:hover': {
-    backgroundColor: primary ? '#49022B' : '#bfbfbf', // 🎨 Blends naturally with hero gradient
-    // color: primary ? '#ffffff' : '#1A0136', // ✅ Keeps contrast readable
+    backgroundColor: primary === 'true' ? '#49022B' : '#bfbfbf',
     transition: 'background-color 0.3s ease-in-out, color 0.3s ease-in-out',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.2rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '1.5rem',
   },
 }));

@@ -27,7 +27,7 @@ function Hero() {
       {/* 🟢 Hero Content */}
       <Title variant="h1">Izrada i održavanje web stranica</Title>
       <ButtonContainer>
-        <CustomButton primary>Usluge</CustomButton>
+        <CustomButton primary="true">Usluge</CustomButton>
         <CustomButton>Kontakt</CustomButton>
       </ButtonContainer>
     </HeroContainer>
