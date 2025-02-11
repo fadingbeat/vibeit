@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
 
 const SubscribeBox = () => {
   const [email, setEmail] = useState('');
@@ -19,14 +18,22 @@ const SubscribeBox = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await submitEmailToEmailJS(email);
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
       if (response && response.status === 200) {
-        setMessage(
-          'Hvala na prijavi! Obavijestit ćemo vas kada stranica bude online!'
-        );
+        setMessage('Hvala! Bit ćete obaviješteni kada stranica bude online.');
+        setEmail(''); // Reset form
       } else {
-        setMessage(
-          'Oops, nešto je pošlo u krivom smjeru. Molimo probajte ponovno.'
+        throw (
+          (new Error(result.error || 'Something went wrong'),
+          setMessage({
+            message: 'Oops, greška. Probajte ponovno.',
+          }))
         );
       }
     } catch (error) {
@@ -36,20 +43,6 @@ const SubscribeBox = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const submitEmailToEmailJS = async (email) => {
-    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID; // Replace with your EmailJS service ID
-    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID; // Replace with your EmailJS template ID
-    const userID = import.meta.env.VITE_EMAILJS_USER_ID; // Replace with your EmailJS user ID
-
-    const templateParams = {
-      user_email: email,
-      message:
-        'Hvala na prijavi! Obavijestit ćemo vas kada stranica bude online!',
-    };
-
-    return emailjs.send(serviceID, templateID, templateParams, userID);
   };
 
   return (
